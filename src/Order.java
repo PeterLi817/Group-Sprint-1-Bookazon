@@ -75,7 +75,7 @@ public class Order {
             totalPrice *= 0.10; // 10% discount for platinum members
         } else if (subscription == "silver") {
             totalPrice *= 0.05; // 5% discount for silver members
-        } 
+        }
 
         return totalPrice;
     }

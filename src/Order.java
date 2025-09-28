@@ -17,22 +17,12 @@ public class Order {
         this.billingAddress = billingAddress;
     }
 
-    public void setShippingAddress(int addressNumber, String street, String city, String state, int zipCode, String country) {
-        shippingAddress.setAddressNumber(addressNumber);
-        shippingAddress.setStreet(street);
-        shippingAddress.setCity(city);
-        shippingAddress.setState(state);
-        shippingAddress.setZipCode(zipCode);
-        shippingAddress.setCountry(country);
+    public void setShippingAddress(Address address) {
+        this.shippingAddress = address;
     }
 
-    public void setBillingAddress(int addressNumber, String street, String city, String state, int zipCode, String country) {
-        billingAddress.setAddressNumber(addressNumber);
-        billingAddress.setStreet(street);
-        billingAddress.setCity(city);
-        billingAddress.setState(state);
-        billingAddress.setZipCode(zipCode);
-        billingAddress.setCountry(country);
+    public void setBillingAddress(Address address) {
+        this.billingAddress= address;
     }
 
     public void setOrderStatus(String status) {
@@ -69,7 +59,7 @@ public class Order {
             totalPrice += item.getTotalPrice();
         }
 
-        totalPrice *= 1 - subscription.getDiscout();
+        totalPrice *= 1 - subscription.getDiscount();
 
         return totalPrice;
     }

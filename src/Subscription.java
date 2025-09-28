@@ -6,7 +6,7 @@ abstract class Subscription {
         this.discount = discount;
     }
 
-    public double getDiscout() {
+    public double getDiscount() {
         return discount;
     }
 

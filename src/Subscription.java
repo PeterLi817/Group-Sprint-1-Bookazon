@@ -1,13 +1,13 @@
 abstract class Subscription {
-    private double discout;
+    private double discount;
     private String name;
 
-    Subscription(double discout, String name) {
-        this.discout = discout;
+    Subscription(double discount, String name) {
+        this.discount = discount;
     }
 
     public double getDiscout() {
-        return discout;
+        return discount;
     }
 
     public String getName() {

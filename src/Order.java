@@ -9,12 +9,14 @@ public class Order {
     private Address billingAddress;
     private ArrayList<CartItem> items;
     private double orderPrice;
+    private Subscription subscription;
 
     public Order(Cart cart, Subscription subscription, Address shippingAddress, Address billingAddress) {
         this.items = cart.getItems();
         this.orderPrice = calculatePrice(subscription);
         this.shippingAddress = shippingAddress;
         this.billingAddress = billingAddress;
+        this.subscription = subscription;
     }
 
     public void setShippingAddress(Address address) {
@@ -41,6 +43,15 @@ public class Order {
         this.userName = name;
     }
 
+    public void setSubscription(Subscription subscription) {
+        this.subscription = subscription;
+        this.orderPrice = calculatePrice(subscription);
+    }
+    
+    public Subscription getSubscription() {
+        return this.subscription;
+    }
+
     public void printOrderDetails() {
         System.out.println("Order Details:");
         System.out.println("Date Created: " + dateCreated);
@@ -49,6 +60,8 @@ public class Order {
         System.out.println("Order Status: " + orderStatus);
         System.out.println("Shipping Address: " + shippingAddress.toString());
         System.out.println("Billing Address: " + billingAddress.toString());
+        System.out.println("Subscription Name: " + subscription.getName());
+        System.out.println("Subscription Discount: " + (subscription.getDiscount() * 100) + "%");
         System.out.println("Order Price: $" + orderPrice);
     }
 

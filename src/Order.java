@@ -69,7 +69,7 @@ public class Order {
             totalPrice += item.getTotalPrice();
         }
 
-        totalPrice *= 1 - subscription.getDiscout();
+        totalPrice *= 1 - subscription.getDiscount();
 
         return totalPrice;
     }

@@ -26,4 +26,8 @@ public class CartItem {
     public double getTotalPrice() {
         return price * quantity;
     }
+
+    public String getName() {
+        return itemName;
+    }
 }

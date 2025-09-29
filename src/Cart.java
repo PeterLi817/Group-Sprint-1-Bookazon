@@ -1,8 +1,12 @@
 import java.util.ArrayList;
 
 public class Cart {
-    private ArrayList<CartItem> items = new ArrayList<>();
-
+    private ArrayList<CartItem> items;
+    
+    public Cart() {
+        items = new ArrayList<>();
+    }
+    
     public void addItem(CartItem item) {
         items.add(item);
     }
@@ -10,24 +14,28 @@ public class Cart {
     public void removeItem(CartItem item) {
         items.remove(item);
     }
-
+    
     public void updateQuantity(CartItem item, int quantity) {
         for (CartItem cartItem : items) {
             if (cartItem.equals(item)) {
-                cartItem.updateQuantity(quantity);  // Call CartItem’s method
+                cartItem.updateQuantity(quantity);  // FIXED
                 break;
             }
         }
     }
-
-    public void viewCartDetails() {
-        System.out.println("Cart Details:");
-        for (CartItem item : items) {
-            System.out.println(item.getDetails());  // Just ask CartItem
+    
+    
+    public class CartViewer {
+        public static void printCart(Cart cart) {
+            System.out.println("Cart Details:");
+            for (CartItem item : cart.getItems()) {
+                System.out.println(item.getDetails());  // CHANGED → use CartItem’s method
+            }
+            System.out.println();
         }
-        System.out.println();
     }
-
+    
+    
     public ArrayList<CartItem> getItems() {
         return items;
     }

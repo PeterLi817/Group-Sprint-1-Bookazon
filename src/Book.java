@@ -1,24 +1,21 @@
-public class Book {
-    private String title;
+public class Book extends CartItem {
     private String author;
     private int yearPublished;
-    private double price;
-    private boolean isPaperback;  // true if the book is paperback, false if it is hardcover
+    private boolean isPaperback;
 
-    public Book(String title, String author, int yearPublished, double price, boolean isPaperback) {
-        this.title = title;
+    public Book(String title, String author, int yearPublished, double price, boolean isPaperback, int quantity) {
+        super(title, price, quantity);
         this.author = author;
         this.yearPublished = yearPublished;
-        this.price = price;
         this.isPaperback = isPaperback;
     }
 
     public String getTitle() {
-        return title;
+        return getName();
     }
 
     public void setTitle(String title) {
-        this.title = title;
+        setName(title);
     }
 
     public String getAuthor() {
@@ -38,11 +35,11 @@ public class Book {
     }
 
     public double getPrice() {
-        return price;
+        return super.getTotalPrice() / getQuantity();
     }
 
     public void setPrice(double price) {
-        this.price = price;
+        super.setPrice(price);
     }
 
     public boolean isPaperback() {
@@ -54,18 +51,18 @@ public class Book {
     }
 
     public void printBookDetails() {
-        System.out.println("Title: " + title);
+        System.out.println("Title: " + getName());
         System.out.println("Author: " + author);
         System.out.println("Year Published: " + yearPublished);
-        System.out.println("Price: $" + price);
+        System.out.println("Price: $" + getPrice());
     }
 
     public boolean isPriceValid() {
-        return price > 0;
+        return getPrice() > 0;
     }
 
     public boolean isTitleValid() {
-        return title != null && !title.isEmpty();
+        return getName() != null && !getName().isEmpty();
     }
 
     public boolean isAuthorValid() {

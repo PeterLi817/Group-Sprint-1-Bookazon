@@ -1,4 +1,4 @@
-public class CartItem {
+public abstract class CartItem {
     private String itemName;
     private double price;
     private int quantity;
@@ -9,12 +9,10 @@ public class CartItem {
         this.quantity = quantity;
     }
 
-    // Cart no longer uses setQuantity directly
     public void updateQuantity(int quantity) {
         this.quantity = quantity;
     }
 
-    // Cart doesn’t need to know how to print details
     public String getDetails() {
         return itemName + " - Quantity: " + quantity + " - Total: $" + getTotalPrice();
     }
@@ -22,6 +20,7 @@ public class CartItem {
     public int getQuantity() {
         return quantity;
     }
+
     public boolean equals(CartItem item) {
         return this.itemName.equals(item.itemName);
     }
@@ -32,5 +31,13 @@ public class CartItem {
 
     public String getName() {
         return itemName;
+    }
+
+    public void setName(String name) {
+        this.itemName = name;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
     }
 }

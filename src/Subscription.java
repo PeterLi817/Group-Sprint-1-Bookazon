@@ -4,6 +4,7 @@ abstract class Subscription {
 
     Subscription(double discount, String name) {
         this.discount = discount;
+        this.name = name;
     }
 
     public double getDiscount() {

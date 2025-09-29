@@ -52,10 +52,9 @@ public class User {
     }
 
     public void checkout() {
-        Order order = new Order(cart, this.subscription, this.shippingAddress, this.billingAddress);
+        Order order = new Order(cart, this, this.shippingAddress, this.billingAddress);
         order.setOrderStatus("Order Placed");
         order.setDateCreated("2024-01-01");
-        order.setUserName(this.name);
         orders.add(order);
     }
     

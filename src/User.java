@@ -32,17 +32,13 @@ public class User {
         CartViewer.printCart(cart);
     }
 
-    public void addToCart(Book book, int quantity) {
-        cart.addItem(new CartItem(book.getTitle(), book.getPrice(), quantity));
+    public void addToCart(CartItem item, int quantity) {
+        item.updateQuantity(quantity);
+        cart.addItem(item);
     }
 
-    public void removeFromCart(Book book) {
-        for (CartItem item : cart.getItems()) {
-            if (item.getName().equals(book.getTitle())) {
-                cart.getItems().remove(item);
-                break;
-            }
-        }
+    public void removeFromCart(CartItem item) {
+        cart.removeItem(item);
     }
 
     public void viewOrders() {

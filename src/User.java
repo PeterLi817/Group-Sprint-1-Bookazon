@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class User {
     private String name;
@@ -46,10 +48,15 @@ public class User {
         }
     }
 
+    public ArrayList<Order> getOrders() {
+        return orders;
+    }
+
     public void checkout() {
         Order order = new Order(cart, this, this.shippingAddress, this.billingAddress);
         order.setOrderStatus("Order Placed");
-        order.setDateCreated("2024-01-01");
+        String dateToday = LocalDate.now().format(DateTimeFormatter.ISO_DATE);
+        order.setDateCreated(dateToday);
         orders.add(order);
     }
 

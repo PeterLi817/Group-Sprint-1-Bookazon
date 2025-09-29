@@ -77,6 +77,8 @@ public class Bookazon {
         // checkout
         bookazon.users.get(0).checkout();
 
+        bookazon.users.get(0).getOrders().get(0).shipOrder(); // ship the order
+
         // view order details
         bookazon.users.get(0).viewOrders();
     }

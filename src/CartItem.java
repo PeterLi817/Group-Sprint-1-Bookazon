@@ -19,6 +19,9 @@ public class CartItem {
         return itemName + " - Quantity: " + quantity + " - Total: $" + getTotalPrice();
     }
 
+    public int getQuantity() {
+        return quantity;
+    }
     public boolean equals(CartItem item) {
         return this.itemName.equals(item.itemName);
     }

@@ -24,18 +24,6 @@ public class Cart {
         }
     }
     
-    
-    public class CartViewer {
-        public static void printCart(Cart cart) {
-            System.out.println("Cart Details:");
-            for (CartItem item : cart.getItems()) {
-                System.out.println(item.getDetails());  // CHANGED → use CartItem’s method
-            }
-            System.out.println();
-        }
-    }
-    
-    
     public ArrayList<CartItem> getItems() {
         return items;
     }

@@ -27,9 +27,8 @@ public class User {
         this.subscription = role;
     }
 
-    // CHANGED: use CartViewer instead of cart.viewCartDetails()
     public void viewCart() {
-        CartViewer.printCart(cart);
+        cart.printCart();
     }
 
     public void addToCart(CartItem item, int quantity) {
@@ -53,11 +52,11 @@ public class User {
         order.setDateCreated("2024-01-01");
         orders.add(order);
     }
-    
+
     public void setShippingAddress(Address shippingAddress) {
         this.shippingAddress = shippingAddress;
     }
-    
+
     public void setBillingAddress(Address billingAddress) {
         this.billingAddress = billingAddress;
     }

@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class User {
     private String name;
@@ -27,9 +29,8 @@ public class User {
         this.subscription = role;
     }
 
-    // CHANGED: use CartViewer instead of cart.viewCartDetails()
     public void viewCart() {
-        CartViewer.printCart(cart);
+        cart.printCart();
     }
 
     public void addToCart(CartItem item, int quantity) {
@@ -47,17 +48,22 @@ public class User {
         }
     }
 
+    public ArrayList<Order> getOrders() {
+        return orders;
+    }
+
     public void checkout() {
         Order order = new Order(cart, this, this.shippingAddress, this.billingAddress);
         order.setOrderStatus("Order Placed");
-        order.setDateCreated("2024-01-01");
+        String dateToday = LocalDate.now().format(DateTimeFormatter.ISO_DATE);
+        order.setDateCreated(dateToday);
         orders.add(order);
     }
-    
+
     public void setShippingAddress(Address shippingAddress) {
         this.shippingAddress = shippingAddress;
     }
-    
+
     public void setBillingAddress(Address billingAddress) {
         this.billingAddress = billingAddress;
     }

@@ -2,26 +2,26 @@ import java.util.ArrayList;
 
 public class Bookazon {
 
-    private ArrayList<CartItem> items;
+    private ArrayList<CartItem> itemsCatologue;
     private ArrayList<User> users;
 
     public Bookazon() {
-        items = new ArrayList<>();
+        itemsCatologue = new ArrayList<>();
         users = new ArrayList<>();
     }
 
     public void addItem(CartItem item) {
-        items.add(item);
+        itemsCatologue.add(item);
     }
 
     public void viewItems() {
-        for (CartItem item : items) {
+        for (CartItem item : itemsCatologue) {
             System.out.println(item.getDetails());
         }
     }
 
     public void removeItem(CartItem item) {
-        items.remove(item);
+        itemsCatologue.remove(item);
     }
 
     public void updateItemDetails(CartItem item, String newTitle, double newPrice) {
@@ -61,8 +61,8 @@ public class Bookazon {
         bookazon.addUser(new User("Bob", new GoldSubscription()));
 
         // add items to cart
-        bookazon.users.get(0).addToCart(bookazon.items.get(0), 1);
-        bookazon.users.get(0).addToCart(bookazon.items.get(1), 2);
+        bookazon.users.get(0).addToCart(bookazon.itemsCatologue.get(0), 1);
+        bookazon.users.get(0).addToCart(bookazon.itemsCatologue.get(1), 2);
 
         // view cart
         bookazon.users.get(0).viewCart();
@@ -76,6 +76,8 @@ public class Bookazon {
 
         // checkout
         bookazon.users.get(0).checkout();
+
+        bookazon.users.get(0).getOrders().get(0).shipOrder(); // ship the order
 
         // view order details
         bookazon.users.get(0).viewOrders();

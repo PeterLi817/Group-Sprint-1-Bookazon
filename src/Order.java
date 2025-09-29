@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class Order {
     private String dateCreated;
@@ -36,6 +38,12 @@ public class Order {
 
     public void setDateShipped(String date) {
         this.dateShipped = date;
+    }
+
+    public void shipOrder(){
+        this.orderStatus = "Shipped";
+        String dateToday = LocalDate.now().format(DateTimeFormatter.ISO_DATE);
+        setDateShipped(dateToday);
     }
 
     public void printOrderDetails() {

@@ -1,5 +1,5 @@
 public class Address {
-    private int addressNumber; 
+    private int addressNumber;
     private String street;
     private String city;
     private String state;

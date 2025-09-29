@@ -50,11 +50,8 @@ public class Book extends CartItem {
         this.isPaperback = isPaperback;
     }
 
-    public void printBookDetails() {
-        System.out.println("Title: " + getName());
-        System.out.println("Author: " + author);
-        System.out.println("Year Published: " + yearPublished);
-        System.out.println("Price: $" + getPrice());
+    public String getDetails() {
+        return getName() + " (Book) - Author: " + author + ", Year: " + yearPublished + ", Is paperback: " + isPaperback + ", Quantity: " + getQuantity() + ", Total: $" + getTotalPrice();
     }
 
     public boolean isPriceValid() {

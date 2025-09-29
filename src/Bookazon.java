@@ -80,6 +80,11 @@ public class Bookazon {
         bookazon.users.get(0).setShippingAddress(shipping);
         bookazon.users.get(0).setBillingAddress(billing);
 
+        // set them on the first user (Alice)
+        bookazon.users.get(0).setShippingAddress(shipping);
+        bookazon.users.get(0).setBillingAddress(billing);
+
+        
         // checkout
         bookazon.users.get(0).checkout();
 

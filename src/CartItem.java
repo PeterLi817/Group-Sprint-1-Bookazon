@@ -9,27 +9,28 @@ public class CartItem {
         this.quantity = quantity;
     }
 
-    public String getName() {
-        return itemName;
+    // Cart no longer uses setQuantity directly
+    public void updateQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
-    public double getPrice() {
-        return price;
+    // Cart doesn’t need to know how to print details
+    public String getDetails() {
+        return itemName + " - Quantity: " + quantity + " - Total: $" + getTotalPrice();
     }
 
     public int getQuantity() {
         return quantity;
     }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
-
     public boolean equals(CartItem item) {
-        return this.itemName.equals(item.getName());
+        return this.itemName.equals(item.itemName);
     }
 
     public double getTotalPrice() {
         return price * quantity;
+    }
+
+    public String getName() {
+        return itemName;
     }
 }

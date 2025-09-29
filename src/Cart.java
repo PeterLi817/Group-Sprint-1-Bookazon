@@ -18,18 +18,10 @@ public class Cart {
     public void updateQuantity(CartItem item, int quantity) {
         for (CartItem cartItem : items) {
             if (cartItem.equals(item)) {
-                cartItem.setQuantity(quantity);
+                cartItem.updateQuantity(quantity);  // FIXED
                 break;
             }
         }
-    }
-    
-    public void viewCartDetails() {
-        System.out.println("Cart Details:");
-        for (CartItem item : items) {
-            System.out.println(item.getName() + " - Quantity: " + item.getQuantity());
-        }
-        System.out.println("\n");
     }
     
     public ArrayList<CartItem> getItems() {

@@ -1,4 +1,3 @@
-
 import java.util.ArrayList;
 
 public class User {
@@ -28,8 +27,9 @@ public class User {
         this.subscription = role;
     }
 
+    // CHANGED: use CartViewer instead of cart.viewCartDetails()
     public void viewCart() {
-        cart.viewCartDetails();
+        CartViewer.printCart(cart);
     }
 
     public void addToCart(Book book, int quantity) {
@@ -59,7 +59,6 @@ public class User {
         orders.add(order);
     }
     
-
     public void setShippingAddress(Address shippingAddress) {
         this.shippingAddress = shippingAddress;
     }
@@ -67,6 +66,4 @@ public class User {
     public void setBillingAddress(Address billingAddress) {
         this.billingAddress = billingAddress;
     }
-    
 }
-

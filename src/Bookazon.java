@@ -73,8 +73,12 @@ public class Bookazon {
         bookazon.users.get(0).viewCart();
 
         // set shipping address and billing address
+        
         Address shipping = new Address(123, "Main St", "Springfield", "IL", 62701, "USA");
         Address billing  = new Address(456, "Elm St", "Springfield", "IL", 62702, "USA");
+
+        bookazon.users.get(0).setShippingAddress(shipping);
+        bookazon.users.get(0).setBillingAddress(billing);
 
         // set them on the first user (Alice)
         bookazon.users.get(0).setShippingAddress(shipping);

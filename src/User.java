@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class User {
     private String name;
@@ -27,22 +29,17 @@ public class User {
         this.subscription = role;
     }
 
-    // CHANGED: use CartViewer instead of cart.viewCartDetails()
     public void viewCart() {
-        CartViewer.printCart(cart);
+        cart.printCart();
     }
 
-    public void addToCart(Book book, int quantity) {
-        cart.addItem(new CartItem(book.getTitle(), book.getPrice(), quantity));
+    public void addToCart(CartItem item, int quantity) {
+        item.updateQuantity(quantity);
+        cart.addItem(item);
     }
 
-    public void removeFromCart(Book book) {
-        for (CartItem item : cart.getItems()) {
-            if (item.getName().equals(book.getTitle())) {
-                cart.getItems().remove(item);
-                break;
-            }
-        }
+    public void removeFromCart(CartItem item) {
+        cart.removeItem(item);
     }
 
     public void viewOrders() {
@@ -51,18 +48,22 @@ public class User {
         }
     }
 
+    public ArrayList<Order> getOrders() {
+        return orders;
+    }
+
     public void checkout() {
-        Order order = new Order(cart, this.subscription, this.shippingAddress, this.billingAddress);
+        Order order = new Order(cart, this, this.shippingAddress, this.billingAddress);
         order.setOrderStatus("Order Placed");
-        order.setDateCreated("2024-01-01");
-        order.setUserName(this.name);
+        String dateToday = LocalDate.now().format(DateTimeFormatter.ISO_DATE);
+        order.setDateCreated(dateToday);
         orders.add(order);
     }
-    
+
     public void setShippingAddress(Address shippingAddress) {
         this.shippingAddress = shippingAddress;
     }
-    
+
     public void setBillingAddress(Address billingAddress) {
         this.billingAddress = billingAddress;
     }

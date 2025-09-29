@@ -2,11 +2,11 @@ import java.util.ArrayList;
 
 public class Cart {
     private ArrayList<CartItem> items;
-    
+
     public Cart() {
         items = new ArrayList<>();
     }
-    
+
     public void addItem(CartItem item) {
         items.add(item);
     }
@@ -14,7 +14,7 @@ public class Cart {
     public void removeItem(CartItem item) {
         items.remove(item);
     }
-    
+
     public void updateQuantity(CartItem item, int quantity) {
         for (CartItem cartItem : items) {
             if (cartItem.equals(item)) {
@@ -23,8 +23,17 @@ public class Cart {
             }
         }
     }
-    
+
     public ArrayList<CartItem> getItems() {
         return items;
     }
+
+    public void printCart() {
+        System.out.println("Cart Details:");
+        for (CartItem item : items) {
+            System.out.println(item.getDetails());
+        }
+        System.out.println();
+    }
+
 }

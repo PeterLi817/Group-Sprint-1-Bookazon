@@ -3,20 +3,19 @@ import java.util.ArrayList;
 public class Order {
     private String dateCreated;
     private String dateShipped;
-    private String userName;
+    private User user;
     private String orderStatus;
     private Address shippingAddress;
     private Address billingAddress;
     private ArrayList<CartItem> items;
     private double orderPrice;
-    private Subscription subscription;
 
-    public Order(Cart cart, Subscription subscription, Address shippingAddress, Address billingAddress) {
+    public Order(Cart cart, User user, Address shippingAddress, Address billingAddress) {
         this.items = cart.getItems();
-        this.orderPrice = calculatePrice(subscription);
+        this.orderPrice = calculatePrice(user.getSubscription());
         this.shippingAddress = shippingAddress;
         this.billingAddress = billingAddress;
-        this.subscription = subscription;
+        this.user = user;
     }
 
     public void setShippingAddress(Address address) {
@@ -39,29 +38,16 @@ public class Order {
         this.dateShipped = date;
     }
 
-    public void setUserName(String name) {
-        this.userName = name;
-    }
-
-    public void setSubscription(Subscription subscription) {
-        this.subscription = subscription;
-        this.orderPrice = calculatePrice(subscription);
-    }
-    
-    public Subscription getSubscription() {
-        return this.subscription;
-    }
-
     public void printOrderDetails() {
         System.out.println("Order Details:");
         System.out.println("Date Created: " + dateCreated);
         System.out.println("Date Shipped: " + dateShipped);
-        System.out.println("User Name: " + userName);
+        System.out.println("User Name: " + user.getName());
         System.out.println("Order Status: " + orderStatus);
         System.out.println("Shipping Address: " + shippingAddress.toString());
         System.out.println("Billing Address: " + billingAddress.toString());
-        System.out.println("Subscription Name: " + subscription.getName());
-        System.out.println("Subscription Discount: " + (subscription.getDiscount() * 100) + "%");
+        System.out.println("Subscription Name: " + user.getSubscription().getName());
+        System.out.println("Subscription Discount: " + (user.getSubscription().getDiscount() * 100) + "%");
         System.out.println("Order Price: $" + orderPrice);
     }
 

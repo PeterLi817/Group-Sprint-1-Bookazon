@@ -10,29 +10,19 @@ public class Order {
     private ArrayList<CartItem> items;
     private double orderPrice;
 
-    public Order(Cart cart, String subscription, Address shippingAddress, Address billingAddress) {
+    public Order(Cart cart, Subscription subscription, Address shippingAddress, Address billingAddress) {
         this.items = cart.getItems();
         this.orderPrice = calculatePrice(subscription);
         this.shippingAddress = shippingAddress;
         this.billingAddress = billingAddress;
     }
 
-    public void setShippingAddress(int addressNumber, String street, String city, String state, int zipCode, String country) {
-        shippingAddress.setAddressNumber(addressNumber);
-        shippingAddress.setStreet(street);
-        shippingAddress.setCity(city);
-        shippingAddress.setState(state);
-        shippingAddress.setZipCode(zipCode);
-        shippingAddress.setCountry(country);
+    public void setShippingAddress(Address address) {
+        this.shippingAddress = address;
     }
 
-    public void setBillingAddress(int addressNumber, String street, String city, String state, int zipCode, String country) {
-        billingAddress.setAddressNumber(addressNumber);
-        billingAddress.setStreet(street);
-        billingAddress.setCity(city);
-        billingAddress.setState(state);
-        billingAddress.setZipCode(zipCode);
-        billingAddress.setCountry(country);
+    public void setBillingAddress(Address address) {
+        this.billingAddress= address;
     }
 
     public void setOrderStatus(String status) {
@@ -62,20 +52,14 @@ public class Order {
         System.out.println("Order Price: $" + orderPrice);
     }
 
-    public double calculatePrice(String subscription) {
+    public double calculatePrice(Subscription subscription) {
         double totalPrice = 0.0;
 
         for (CartItem item : items) {
             totalPrice += item.getTotalPrice();
         }
 
-        if (subscription == "gold") {
-            totalPrice *= 0.15; // 15% discount for prime members
-        } else if (subscription == "platinum") {
-            totalPrice *= 0.10; // 10% discount for platinum members
-        } else if (subscription == "silver") {
-            totalPrice *= 0.05; // 5% discount for silver members
-        } 
+        totalPrice *= 1 - subscription.getDiscount();
 
         return totalPrice;
     }

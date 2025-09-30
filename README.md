@@ -28,11 +28,10 @@ The project included UML diagrams illustrating the system before and after refac
 
 - UML Before:
 
-   <img width="1128" height="539" alt="Screenshot 2025-09-29 at 9 13 53 PM" src="https://github.com/user-attachments/assets/df0e5971-a610-4374-923a-b3abe6f10084" />
+<img width="1351" height="715" alt="Screenshot 2025-09-29 at 10 08 47 PM" src="https://github.com/user-attachments/assets/0663079b-00b9-4961-aebf-069dfaf3c4f1" />
 
 - UML After:
-
-<img width="731" height="608" alt="Screenshot 2025-09-29 at 9 15 04 PM" src="https://github.com/user-attachments/assets/4f804764-f211-4e91-879d-4a35c9b715b2" />
+<img width="908" height="774" alt="Screenshot 2025-09-29 at 10 12 09 PM" src="https://github.com/user-attachments/assets/af2caf6d-203b-4bff-8a40-c28efda6a433" />
 
 
 ---
